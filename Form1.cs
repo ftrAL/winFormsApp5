@@ -55,10 +55,21 @@ namespace WinFormsApp5
                 return;
             }
 
-            
-            if (tbUsername.Text == savedUser && tbPassword.Text == savedPass)
+            // String & String Methods
+            savedUser = savedUser.Trim().ToUpper();
+            savedPass = savedPass.Trim();
+
+            string inputUser = tbUsername.Text.Trim().ToUpper();
+            string inputPass = tbPassword.Text.Trim();
+
+            int panjangUsername = inputUser.Length;
+            if (inputUser == savedUser && inputPass == savedPass)
             {
-                MessageBox.Show("Login berhasil!");
+                MessageBox.Show(
+                    "Login berhasil!\n" +
+                    "Username: " + inputUser +
+                    "\nPanjang username: " + panjangUsername
+                    );
 
                 FormHome formHome = new FormHome();
                 formHome.Show();
