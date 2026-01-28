@@ -47,7 +47,7 @@ namespace WinFormsApp5
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string savedUser, savedPass;
-
+            string statusAkses;
             
             if (!UserStore.Load(out savedUser, out savedPass))
             {
@@ -65,10 +65,13 @@ namespace WinFormsApp5
             int panjangUsername = inputUser.Length;
             if (inputUser == savedUser && inputPass == savedPass)
             {
+                statusAkses = "AKSES DITERIMA";
+
                 MessageBox.Show(
                     "Login berhasil!\n" +
                     "Username: " + inputUser +
-                    "\nPanjang username: " + panjangUsername
+                    "\nPanjang username: " + panjangUsername +
+                    "\nStatus: " + statusAkses
                     );
 
                 FormHome formHome = new FormHome();
@@ -77,7 +80,12 @@ namespace WinFormsApp5
             }
             else
             {
-                MessageBox.Show("Username / password salah");
+                statusAkses = "AKSES DITOLAK";
+
+                MessageBox.Show(
+                    "Login gagal! Username / password salah\n" +
+                    "Status: " + statusAkses
+                    );
             }
         }
 
