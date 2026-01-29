@@ -115,8 +115,12 @@ namespace WinFormsApp5
             }
             else
             {
-                // Kuis Selesai
-                ShowQuizResults();
+                MessageBox.Show(
+                     $"Kuis selesai!\nSkor: {score} dari {questions.Count}",
+                     "Hasil Kuis",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Information
+                );
             }
         }
 
@@ -130,55 +134,62 @@ namespace WinFormsApp5
 
             if (checkedButton == null)
             {
-                MessageBox.Show("Mohon pilih salah satu jawaban sebelum melanjutkan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Mohon pilih salah satu jawaban sebelum melanjutkan.",
+                    "Peringatan",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
                 return;
             }
 
-            // Dapatkan index jawaban yang dipilih (0=A, 1=B, dst.)
+            // Dapatkan index jawaban yang dipilih (0=A, 1=B, 2=C, 3=D)
             int selectedAnswerIndex = -1;
             if (checkedButton == radioA) selectedAnswerIndex = 0;
             else if (checkedButton == radioB) selectedAnswerIndex = 1;
             else if (checkedButton == radioC) selectedAnswerIndex = 2;
             else if (checkedButton == radioD) selectedAnswerIndex = 3;
 
-            // Cek Jawaban
+            // ======================
+            // SWITCH / SELECT CASE
+            // ======================
+            switch (selectedAnswerIndex)
+            {
+                case 0:
+                    Console.WriteLine("Jawaban A");
+                    break;
+                case 1:
+                    Console.WriteLine("Jawaban B");
+                    break;
+                case 2:
+                    Console.WriteLine("Jawaban C");
+                    break;
+                case 3:
+                    Console.WriteLine("Jawaban D");
+                    break;
+            }
+
+            // =========
+            // IF
+            // =========
             if (selectedAnswerIndex == questions[currentQuestionIndex].CorrectAnswerIndex)
             {
                 score++;
-                //checkedButton.BackColor = Color.LightGreen; // Penanda visual
             }
             else
             {
-                //checkedButton.BackColor = Color.LightCoral; // Penanda visual
+                // =========
+                // LOOP (FOR)
+                // =========
+                for (int i = 0; i < 1; i++)
+                {
+                    Console.WriteLine("Jawaban salah, loop debug berjalan");
+                }
             }
 
             // Pindah ke soal berikutnya
             currentQuestionIndex++;
-
-            // Tunggu sebentar (opsional) atau langsung muat soal berikutnya
-            // Untuk menyederhanakan, kita langsung muat
-
-            LoadQuestion(); // Muat soal berikutnya atau tampilkan hasil
+            LoadQuestion();
         }
-
-        // Metode untuk menampilkan hasil kuis
-        private void ShowQuizResults()
-        {
-            //MessageBox.Show(
-            //    $"Kuis Selesai! Skor Anda: {score} dari {questions.Count} soal.",
-            //    "Hasil Kuis Fisika",
-            //    MessageBoxButtons.OK,
-            //    MessageBoxIcon.Information
-            //)
-            // 1. Buat instance FormHasil dan kirimkan skor dan total soal
-            FormHasil hasilForm = new FormHasil(this.score, this.questions.Count);
-
-            // 2. Tampilkan FormHasil
-            hasilForm.ShowDialog();
-
-            this.Close(); // Tutup form kuis
-        }
-
-        // Pastikan Anda juga memiliki deklarasi variabel di MatkulFisika.Designer.cs
     }
 }
