@@ -48,21 +48,21 @@ namespace WinFormsApp5
         {
             string savedUser, savedPass;
 
-            
+
             if (!UserStore.Load(out savedUser, out savedPass))
             {
                 MessageBox.Show("Belum ada akun terdaftar");
                 return;
             }
 
-            
+
             if (tbUsername.Text == savedUser && tbPassword.Text == savedPass)
             {
                 MessageBox.Show("Login berhasil!");
 
                 FormHome formHome = new FormHome();
                 formHome.Show();
-                this.Hide();   
+                this.Hide();
             }
             else
             {
@@ -79,6 +79,11 @@ namespace WinFormsApp5
         {
             FormRegister formRegister = new FormRegister();
             formRegister.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

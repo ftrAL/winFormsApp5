@@ -54,6 +54,9 @@ namespace WinFormsApp5
             this.Close();
         }
 
-        
+        private void FormHasil_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

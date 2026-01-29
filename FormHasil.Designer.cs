@@ -47,10 +47,9 @@ namespace WinFormsApp5
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(564, 69);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(304, 32);
             label1.Name = "label1";
-            label1.Size = new Size(426, 71);
+            label1.Size = new Size(219, 37);
             label1.TabIndex = 0;
             label1.Text = "Hasil Quiz Anda";
             // 
@@ -60,10 +59,9 @@ namespace WinFormsApp5
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(673, 207);
-            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Location = new Point(362, 97);
             label2.Name = "label2";
-            label2.Size = new Size(185, 45);
+            label2.Size = new Size(94, 21);
             label2.TabIndex = 1;
             label2.Text = "Score Anda";
             // 
@@ -73,10 +71,9 @@ namespace WinFormsApp5
             lblScore.BackColor = Color.Transparent;
             lblScore.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblScore.ForeColor = Color.White;
-            lblScore.Location = new Point(719, 283);
-            lblScore.Margin = new Padding(6, 0, 6, 0);
+            lblScore.Location = new Point(387, 133);
             lblScore.Name = "lblScore";
-            lblScore.Size = new Size(84, 45);
+            lblScore.Size = new Size(42, 21);
             lblScore.TabIndex = 2;
             lblScore.Text = "0 / 0";
             // 
@@ -84,10 +81,9 @@ namespace WinFormsApp5
             // 
             btnKembali.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnKembali.ForeColor = Color.Indigo;
-            btnKembali.Location = new Point(678, 709);
-            btnKembali.Margin = new Padding(6);
+            btnKembali.Location = new Point(365, 332);
             btnKembali.Name = "btnKembali";
-            btnKembali.Size = new Size(171, 64);
+            btnKembali.Size = new Size(92, 30);
             btnKembali.TabIndex = 3;
             btnKembali.Text = "Kembali";
             btnKembali.UseVisualStyleBackColor = true;
@@ -99,10 +95,9 @@ namespace WinFormsApp5
             lblMotivasi.BackColor = Color.Transparent;
             lblMotivasi.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblMotivasi.ForeColor = Color.White;
-            lblMotivasi.Location = new Point(308, 537);
-            lblMotivasi.Margin = new Padding(6, 0, 6, 0);
+            lblMotivasi.Location = new Point(166, 252);
             lblMotivasi.Name = "lblMotivasi";
-            lblMotivasi.Size = new Size(917, 90);
+            lblMotivasi.Size = new Size(456, 42);
             lblMotivasi.TabIndex = 4;
             lblMotivasi.Text = "Terima kasih sudah mencoba\nIstirahat sebentar, kamu sudah melakukan yang terbaik 🌸 ⭐";
             lblMotivasi.TextAlign = ContentAlignment.TopCenter;
@@ -113,19 +108,18 @@ namespace WinFormsApp5
             lblPercentage.BackColor = Color.Transparent;
             lblPercentage.Font = new Font("Segoe UI", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPercentage.ForeColor = Color.White;
-            lblPercentage.Location = new Point(679, 386);
-            lblPercentage.Margin = new Padding(6, 0, 6, 0);
+            lblPercentage.Location = new Point(366, 181);
             lblPercentage.Name = "lblPercentage";
-            lblPercentage.Size = new Size(161, 71);
+            lblPercentage.Size = new Size(83, 37);
             lblPercentage.TabIndex = 5;
             lblPercentage.Text = " (0%)";
             // 
             // FormHasil
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1552, 890);
+            ClientSize = new Size(836, 413);
             Controls.Add(lblPercentage);
             Controls.Add(lblMotivasi);
             Controls.Add(btnKembali);
@@ -133,12 +127,12 @@ namespace WinFormsApp5
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(6);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormHasil";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hasil Kuis";
+            Load += FormHasil_Load;
             ResumeLayout(false);
             PerformLayout();
 

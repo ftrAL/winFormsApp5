@@ -48,9 +48,10 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(714, 520);
+            btnLogin.Location = new Point(384, 244);
+            btnLogin.Margin = new Padding(2, 1, 2, 1);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(762, 76);
+            btnLogin.Size = new Size(410, 36);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = false;
@@ -62,35 +63,39 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Arial", 28.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(714, 56);
+            label1.Location = new Point(384, 26);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(677, 88);
+            label1.Size = new Size(345, 45);
             label1.TabIndex = 1;
             label1.Text = "MASUK APLIKASI";
             // 
             // tbUsername
             // 
-            tbUsername.Location = new Point(714, 299);
+            tbUsername.Location = new Point(384, 140);
+            tbUsername.Margin = new Padding(2, 1, 2, 1);
             tbUsername.Name = "tbUsername";
             tbUsername.PlaceholderText = "Masukkan Email atau Username";
-            tbUsername.Size = new Size(762, 39);
+            tbUsername.Size = new Size(412, 23);
             tbUsername.TabIndex = 6;
             tbUsername.TextChanged += tbUsername_TextChanged;
             // 
             // tbPassword
             // 
-            tbPassword.Location = new Point(714, 425);
+            tbPassword.Location = new Point(384, 199);
+            tbPassword.Margin = new Padding(2, 1, 2, 1);
             tbPassword.Name = "tbPassword";
             tbPassword.PlaceholderText = "Masukkan kata sandi";
-            tbPassword.Size = new Size(762, 39);
+            tbPassword.Size = new Size(412, 23);
             tbPassword.TabIndex = 7;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-1472, -143);
+            pictureBox1.Location = new Point(-793, -67);
+            pictureBox1.Margin = new Padding(2, 1, 2, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(2135, 1061);
+            pictureBox1.Size = new Size(1150, 497);
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
@@ -99,9 +104,10 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.ForeColor = Color.DarkGray;
-            label2.Location = new Point(714, 251);
+            label2.Location = new Point(384, 118);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(238, 32);
+            label2.Size = new Size(118, 15);
             label2.TabIndex = 9;
             label2.Text = "Email atau Username";
             // 
@@ -110,9 +116,10 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.ForeColor = Color.DarkGray;
-            label3.Location = new Point(714, 375);
+            label3.Location = new Point(384, 176);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(123, 32);
+            label3.Size = new Size(61, 15);
             label3.TabIndex = 10;
             label3.Text = "Kata sandi";
             // 
@@ -122,9 +129,10 @@
             lblSuksesAtauGagalLogin.BackColor = Color.Transparent;
             lblSuksesAtauGagalLogin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSuksesAtauGagalLogin.ForeColor = Color.LimeGreen;
-            lblSuksesAtauGagalLogin.Location = new Point(714, 181);
+            lblSuksesAtauGagalLogin.Location = new Point(384, 85);
+            lblSuksesAtauGagalLogin.Margin = new Padding(2, 0, 2, 0);
             lblSuksesAtauGagalLogin.Name = "lblSuksesAtauGagalLogin";
-            lblSuksesAtauGagalLogin.Size = new Size(0, 32);
+            lblSuksesAtauGagalLogin.Size = new Size(0, 15);
             lblSuksesAtauGagalLogin.TabIndex = 11;
             lblSuksesAtauGagalLogin.Visible = false;
             // 
@@ -135,9 +143,10 @@
             btnRegisterBuat.FlatStyle = FlatStyle.Flat;
             btnRegisterBuat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegisterBuat.ForeColor = Color.White;
-            btnRegisterBuat.Location = new Point(714, 638);
+            btnRegisterBuat.Location = new Point(384, 299);
+            btnRegisterBuat.Margin = new Padding(2, 1, 2, 1);
             btnRegisterBuat.Name = "btnRegisterBuat";
-            btnRegisterBuat.Size = new Size(762, 76);
+            btnRegisterBuat.Size = new Size(410, 36);
             btnRegisterBuat.TabIndex = 12;
             btnRegisterBuat.Text = "Or Register";
             btnRegisterBuat.UseVisualStyleBackColor = false;
@@ -145,11 +154,11 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1552, 890);
+            ClientSize = new Size(836, 413);
             Controls.Add(btnRegisterBuat);
             Controls.Add(lblSuksesAtauGagalLogin);
             Controls.Add(label3);
@@ -160,9 +169,11 @@
             Controls.Add(btnLogin);
             Controls.Add(label1);
             ForeColor = Color.Coral;
+            Margin = new Padding(2, 1, 2, 1);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formLogin.cs";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
