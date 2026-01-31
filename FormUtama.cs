@@ -9,8 +9,12 @@ using WinFormsApp1;
 
 namespace WinFormsApp5
 {
+    
+
     public partial class FormUtama : Form
     {
+        List<int> daftarNilai = new List<int>();
+
         public FormUtama()
         {
             InitializeComponent();

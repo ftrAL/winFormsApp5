@@ -1,12 +1,21 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
 using System.Linq; // Diperlukan jika Anda menggunakan query Linq
+using System.Windows.Forms;
+using WinFormsApp5;
+using System.Drawing.Printing;
+
 
 namespace WinFormsApp5
 {
     public partial class FormHasil : Form
     {
+        List<int> daftarNilai;
+
+        PrintDocument printDoc = new PrintDocument();
+
+        private int finalScore;
+
         // Constructor dasar
         public FormHasil()
         {
@@ -14,23 +23,45 @@ namespace WinFormsApp5
             this.Text = "Hasil Kuis";
         }
 
-        // Constructor yang menerima skor (Benar) dan Total Soal
-        public FormHasil(int score, int totalQuestions)
+
+
+        public FormHasil(int score, int totalQuestions, DateTime start, DateTime end, TimeSpan duration, List<int> daftarNilai)
         {
             InitializeComponent();
+
+            printDoc.PrintPage += PrintDoc_PrintPage;
+            this.daftarNilai = daftarNilai;
+            this.finalScore = score;
+
+
+            DateTime last = FileHelper.GetLastEditTime();
+
+            if (last != DateTime.MinValue)
+            {
+                lblFileTime.Text = "Terakhir disimpan: " +
+                    last.ToString("dd/MM/yyyy HH:mm");
+            }
+            else
+            {
+                lblFileTime.Text = "File belum ada";
+            }
+
             this.Text = "Hasil Kuis Mata Kuliah";
 
-            // 1. Hitung Persentase
+
             double ratio = (double)score / totalQuestions;
             int percentage = (int)Math.Round(ratio * 100);
 
-            // 2. Tampilkan Skor Fraksi (X/Y)
+
             lblScore.Text = $"{score} / {totalQuestions}";
+            lblPercentage.Text = $"{percentage}%";
 
-            // 3. Tampilkan Skor Persentase
-            lblPercentage.Text = $"= {percentage}%";
 
-            // Opsional: Logika Motivasi
+            lblStart.Text = start.ToString("HH:mm:ss");
+            lblEnd.Text = end.ToString("HH:mm:ss");
+            lblDuration.Text = duration.ToString(@"mm\:ss");
+
+
             if (ratio > 0.8)
             {
                 lblMotivasi.Text = "Selamat! Nilai Anda sangat memuaskan! 🎉";
@@ -48,12 +79,63 @@ namespace WinFormsApp5
             }
         }
 
-        private void BtnKembali_Click(object sender, EventArgs e)
+        private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // Menutup form hasil dan kembali ke FormUtama (Menu Kuis)
+            string text =
+                "Hasil Kuis\n" +
+                "Skor: " + finalScore + "\n" +
+                "Tanggal: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+            Font font = new Font("Arial", 14);
+
+            // Hitung ukuran teks (Calculate Text)
+            SizeF size = e.Graphics.MeasureString(text, font);
+
+            // Posisi tengah
+            float x = (e.PageBounds.Width - size.Width) / 2;
+            float y = 100;
+
+            // Alignment
+            StringFormat format = new StringFormat();
+            format.Alignment = StringAlignment.Center;
+
+            // Cetak
+            e.Graphics.DrawString(
+                text,
+                font,
+                Brushes.Black,
+                new RectangleF(0, y, e.PageBounds.Width, size.Height),
+                format
+            );
+        }
+
+        private void BtnKembali_Click(object sender, EventArgs e)
+        { 
+
             this.Close();
         }
 
-        
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGrafik_Click(object sender, EventArgs e)
+        {
+            FormGrafik fg = new FormGrafik(daftarNilai);
+            fg.Show();
+
+        }
+
+
+
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            preview.Document = printDoc;
+            preview.ShowDialog();
+        }
+
     }
 }

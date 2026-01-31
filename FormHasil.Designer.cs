@@ -38,6 +38,15 @@ namespace WinFormsApp5
             btnKembali = new Button();
             lblMotivasi = new Label();
             lblPercentage = new Label();
+            lblStart = new Label();
+            lblEnd = new Label();
+            lblDuration = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            lblFileTime = new Label();
+            btnGrafik = new Button();
+            btnPrint = new Button();
             SuspendLayout();
             // 
             // label1
@@ -47,7 +56,7 @@ namespace WinFormsApp5
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 19.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(564, 69);
+            label1.Location = new Point(563, 25);
             label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
             label1.Size = new Size(426, 71);
@@ -120,12 +129,128 @@ namespace WinFormsApp5
             lblPercentage.TabIndex = 5;
             lblPercentage.Text = " (0%)";
             // 
+            // lblStart
+            // 
+            lblStart.AutoSize = true;
+            lblStart.BackColor = Color.Indigo;
+            lblStart.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStart.ForeColor = Color.White;
+            lblStart.Location = new Point(167, 52);
+            lblStart.Name = "lblStart";
+            lblStart.Size = new Size(110, 37);
+            lblStart.TabIndex = 6;
+            lblStart.Text = "label3";
+            // 
+            // lblEnd
+            // 
+            lblEnd.AutoSize = true;
+            lblEnd.BackColor = Color.Indigo;
+            lblEnd.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEnd.ForeColor = Color.White;
+            lblEnd.Location = new Point(167, 124);
+            lblEnd.Name = "lblEnd";
+            lblEnd.Size = new Size(110, 37);
+            lblEnd.TabIndex = 7;
+            lblEnd.Text = "label4";
+            // 
+            // lblDuration
+            // 
+            lblDuration.AutoSize = true;
+            lblDuration.BackColor = Color.Indigo;
+            lblDuration.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDuration.ForeColor = Color.White;
+            lblDuration.Location = new Point(1254, 106);
+            lblDuration.Name = "lblDuration";
+            lblDuration.Size = new Size(110, 37);
+            lblDuration.TabIndex = 8;
+            lblDuration.Text = "label5";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(1161, 52);
+            label3.Name = "label3";
+            label3.Size = new Size(298, 37);
+            label3.TabIndex = 9;
+            label3.Text = "Durasi pengerjaan";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(27, 52);
+            label4.Name = "label4";
+            label4.Size = new Size(91, 37);
+            label4.TabIndex = 10;
+            label4.Text = "Start";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(27, 124);
+            label5.Name = "label5";
+            label5.Size = new Size(76, 37);
+            label5.TabIndex = 11;
+            label5.Text = "End";
+            label5.Click += label5_Click;
+            // 
+            // lblFileTime
+            // 
+            lblFileTime.AutoSize = true;
+            lblFileTime.BackColor = Color.Transparent;
+            lblFileTime.Font = new Font("Arial", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblFileTime.ForeColor = Color.White;
+            lblFileTime.Location = new Point(27, 806);
+            lblFileTime.Name = "lblFileTime";
+            lblFileTime.Size = new Size(219, 28);
+            lblFileTime.TabIndex = 12;
+            lblFileTime.Text = "Terakhir Disimpan :";
+            // 
+            // btnGrafik
+            // 
+            btnGrafik.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGrafik.Location = new Point(1309, 751);
+            btnGrafik.Name = "btnGrafik";
+            btnGrafik.Size = new Size(150, 46);
+            btnGrafik.TabIndex = 18;
+            btnGrafik.Text = "Lihat grafik";
+            btnGrafik.UseVisualStyleBackColor = true;
+            btnGrafik.Click += btnGrafik_Click;
+            // 
+            // btnPrint
+            // 
+            btnPrint.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPrint.Location = new Point(1309, 675);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(150, 46);
+            btnPrint.TabIndex = 19;
+            btnPrint.Text = "Print";
+            btnPrint.UseVisualStyleBackColor = true;
+            btnPrint.Click += btnPrint_Click;
+            // 
             // FormHasil
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1552, 890);
+            Controls.Add(btnPrint);
+            Controls.Add(btnGrafik);
+            Controls.Add(lblFileTime);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(lblDuration);
+            Controls.Add(lblEnd);
+            Controls.Add(lblStart);
             Controls.Add(lblPercentage);
             Controls.Add(lblMotivasi);
             Controls.Add(btnKembali);
@@ -152,5 +277,14 @@ namespace WinFormsApp5
         private System.Windows.Forms.Button btnKembali;
         private System.Windows.Forms.Label lblMotivasi;
         private System.Windows.Forms.Label lblPercentage; // DEKLARASI BARU
+        private Label lblStart;
+        private Label lblEnd;
+        private Label lblDuration;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label lblFileTime;
+        private Button btnGrafik;
+        private Button btnPrint;
     }
 }

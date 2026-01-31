@@ -30,5 +30,11 @@ namespace WinFormsApp5
         {
             MessageBox.Show("Terkunci! Masih dalam pengembangan.");
         }
+
+        private void btnGrafik_Click(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 }

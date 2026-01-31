@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Windows.Forms;
+
 
 namespace WinFormsApp5
 {
@@ -17,6 +21,10 @@ namespace WinFormsApp5
 
     public partial class MatkulFisika : Form
     {
+        List<int> daftarNilai = new List<int>();
+
+        DateTime startTime, endTime;
+        TimeSpan duration;
         // Variabel untuk menyimpan semua soal dan melacak posisi saat ini
         private List<QuizQuestion> questions;
         private int currentQuestionIndex = 0;
@@ -25,6 +33,7 @@ namespace WinFormsApp5
         public MatkulFisika()
         {
             InitializeComponent();
+            startTime = DateTime.Now;
 
             // Pendaftaran Event Handler (di Designer.cs tidak ada, jadi didaftarkan manual)
             this.btnJawab.Click += new System.EventHandler(this.BtnJawab_Click);
@@ -145,40 +154,55 @@ namespace WinFormsApp5
             if (selectedAnswerIndex == questions[currentQuestionIndex].CorrectAnswerIndex)
             {
                 score++;
-                //checkedButton.BackColor = Color.LightGreen; // Penanda visual
+              
             }
             else
             {
-                //checkedButton.BackColor = Color.LightCoral; // Penanda visual
+                
             }
-
-            // Pindah ke soal berikutnya
+           
             currentQuestionIndex++;
 
-            // Tunggu sebentar (opsional) atau langsung muat soal berikutnya
-            // Untuk menyederhanakan, kita langsung muat
-
-            LoadQuestion(); // Muat soal berikutnya atau tampilkan hasil
+            LoadQuestion();
         }
 
         // Metode untuk menampilkan hasil kuis
         private void ShowQuizResults()
         {
-            //MessageBox.Show(
-            //    $"Kuis Selesai! Skor Anda: {score} dari {questions.Count} soal.",
-            //    "Hasil Kuis Fisika",
-            //    MessageBoxButtons.OK,
-            //    MessageBoxIcon.Information
-            //)
-            // 1. Buat instance FormHasil dan kirimkan skor dan total soal
-            FormHasil hasilForm = new FormHasil(this.score, this.questions.Count);
+            // 1. Simpan dulu nilainya
+            daftarNilai.Add(this.score);
 
-            // 2. Tampilkan FormHasil
+            // 2. Baru bikin text
+            string hasil = "Riwayat Nilai:\n\n";
+
+            foreach (int nilai in daftarNilai)
+            {
+                hasil += "- " + nilai + "\n";
+            }
+
+            // 3. Tampilkan
+            MessageBox.Show(hasil, "Riwayat Nilai");
+
+            endTime = DateTime.Now;
+            duration = endTime - startTime;
+
+            FileHelper.SaveResult(this.score, this.questions.Count);
+
+            FormHasil hasilForm = new FormHasil(
+                this.score,
+                this.questions.Count,
+                startTime,
+                endTime,
+                duration,
+                daftarNilai
+            );
+
             hasilForm.ShowDialog();
-
-            this.Close(); // Tutup form kuis
+            this.Close();
         }
 
-        // Pastikan Anda juga memiliki deklarasi variabel di MatkulFisika.Designer.cs
+
+
+
     }
 }
